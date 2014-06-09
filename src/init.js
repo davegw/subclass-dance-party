@@ -1,4 +1,5 @@
 $(document).ready(function(){
+  //test
   window.dancers = [];
 
   $(".addDancerButton").on("click", function(event){
