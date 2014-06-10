@@ -18,17 +18,17 @@ $(document).ready(function(){
      * to the stage.
      */
     var dancerMakerFunctionName = $(this).data("dancer-maker-function-name");
-    // get the maker function for the kind of dancer we're supposed to make
-    var dancerMakerFunction = window[dancerMakerFunctionName];
-    // console.log(dancerMakerFunctionName);
-    // make a dancer with a random position
 
-    var dancer = new dancerMakerFunction(
+    // get the maker function for the kind of dancer we're supposed to make
+    var DancerMakerFunction = window[dancerMakerFunctionName];
+
+    // make a dancer with a random position
+    var dancer = new DancerMakerFunction(
       $( window ).height() * Math.random(),
       $( window ).width() * Math.random(),
       Math.random() * 1000
     );
-    $('body').append(dancer.$node);
+    $("body").append(dancer.$node);
 
     if (dancerMakerFunctionName === "BlinkyDancer") {
       window.blinkies.push(dancer);
@@ -52,13 +52,18 @@ $(document).ready(function(){
 
   function closeBlinkies(pacCoords, blinkyCoords) {
     var dist = Math.pow(
-      (Math.pow((pacCoords.top-blinkyCoords.top), 2) +
-      Math.pow((pacCoords.left-blinkyCoords.left), 2)),
+      (Math.pow((pacCoords.top+35-blinkyCoords.top), 2) +
+      Math.pow((pacCoords.left+35-blinkyCoords.left), 2)),
       0.5);
-    if (dist < 10) {
+    console.log(dist);
+    if (dist < 50) {
       return true;
     }
     return false;
   }
+
+  $("body").on("mouseover", ".zangief", function(event) {
+    $(this).css({"background-image": "url('http://fc01.deviantart.net/fs71/f/2012/140/1/9/zangief_yes_gif_by_jayfordgraphics-d50i3a6.gif')"});
+  });
 });
 
