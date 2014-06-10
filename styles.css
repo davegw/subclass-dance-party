@@ -49,3 +49,7 @@ span {
   width: 150px;
   height: 150px;
 }
+.jumper {
+  border:10px solid red;
+  border-radius:10px;
+}
