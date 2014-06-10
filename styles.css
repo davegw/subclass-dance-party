@@ -25,3 +25,16 @@ body, a:link, a:visited, a:active{
   border-radius:10px;
   position:absolute;
 }
+.pacman{
+  position:absolute;
+  width: 70px;
+  border:none;
+  border-radius:none;
+}
+.alignment {
+  position:static;
+  display:inline-block;
+}
+.close {
+  border:10px solid green;
+}

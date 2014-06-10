@@ -1,6 +1,7 @@
 $(document).ready(function(){
   //test
   window.dancers = [];
+  window.blinkies = [];
 
   $(".addDancerButton").on("click", function(event){
     /* This function sets up the click handlers for the create-dancer
@@ -19,16 +20,45 @@ $(document).ready(function(){
     var dancerMakerFunctionName = $(this).data("dancer-maker-function-name");
     // get the maker function for the kind of dancer we're supposed to make
     var dancerMakerFunction = window[dancerMakerFunctionName];
-    console.log(dancerMakerFunction);
-
+    // console.log(dancerMakerFunctionName);
     // make a dancer with a random position
 
     var dancer = new dancerMakerFunction(
-      $("body").height() * Math.random(),
-      $("body").width() * Math.random(),
+      $( window ).height() * Math.random(),
+      $( window ).width() * Math.random(),
       Math.random() * 1000
     );
     $('body').append(dancer.$node);
+
+    if (dancerMakerFunctionName === "BlinkyDancer") {
+      window.blinkies.push(dancer);
+    }
+
+    if (dancerMakerFunctionName === "PacmanDancer") {
+      for (var i = 0; i < window.blinkies.length; i++) {
+        if (closeBlinkies(dancer.getPosition(), window.blinkies[i].getPosition())) {
+          window.blinkies[i].$node.addClass("close");
+        }
+      }
+    }
   });
+
+
+  $("#disperseButton").hide();
+  $(".controls").on("click", function(event){
+    $(".dancer").toggleClass("alignment");
+    $(".controls").toggle();
+  });
+
+  function closeBlinkies(pacCoords, blinkyCoords) {
+    var dist = Math.pow(
+      (Math.pow((pacCoords.top-blinkyCoords.top), 2) +
+      Math.pow((pacCoords.left-blinkyCoords.left), 2)),
+      0.5);
+    if (dist < 10) {
+      return true;
+    }
+    return false;
+  }
 });
 
