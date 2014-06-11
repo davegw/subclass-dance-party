@@ -3,7 +3,8 @@ body, html{
 }
 body{
   margin: 0px;
-  background-color:#444;
+  background-image: url("http://static.wixstatic.com/media/511bec_4c866f1522234c99b10fd9b291a8b00a.jpg");
+  background-size: cover;
   font-size: 18px;
 }
 body, a:link, a:visited, a:active{
@@ -12,9 +13,12 @@ body, a:link, a:visited, a:active{
 span {
   display: inline-block;
 }
-.title, .addDancerButton{
+.title, .addDancerButton, .controls {
   padding:5px 12px;
   float:right;
+}
+.controls {
+  float: left;
 }
 .topbar{
   height:32px;
@@ -38,6 +42,9 @@ span {
   position:static;
   display: inline-block;
 }
+.dancer.alignment {
+  margin: 3px;
+}
 .close {
   border:10px solid green;
 }
@@ -46,7 +53,7 @@ span {
   background-repeat: no-repeat;
   background-size: contain;
   display: inline-block;
-  width: 150px;
+  width: 100px;
   height: 150px;
 }
 .jumper {

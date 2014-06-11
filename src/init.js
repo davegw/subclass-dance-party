@@ -24,8 +24,8 @@ $(document).ready(function(){
 
     // make a dancer with a random position
     var dancer = new DancerMakerFunction(
-      $( window ).height() * Math.random(),
-      $( window ).width() * Math.random(),
+      $( window ).height() * 0.8 * Math.random() + $( window ).height() * 0.1,
+      $( window ).width() * 0.7 * Math.random() + $( window ).width() * 0.1,
       Math.random() * 1000
     );
     $("body").append(dancer.$node);
@@ -45,8 +45,12 @@ $(document).ready(function(){
 
 
   $("#disperseButton").hide();
-  $(".controls").on("click", function(event){
-    $(".dancer").toggleClass("alignment");
+  $("#alignButton").on("click", function(event){
+    $(".dancer").addClass("alignment");
+    $(".controls").toggle();
+  });
+  $("#disperseButton").on("click", function(event){
+    $(".dancer").removeClass("alignment");
     $(".controls").toggle();
   });
 
